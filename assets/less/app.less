@@ -1,0 +1,806 @@
+/*!
+ * Roots 6.5.1
+ */
+@import "../fonts/courier-prime/courier-prime.less";
+@import "bootstrap/bootstrap.less";
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+body {
+   //padding-left: 13em;
+   //font: 13pt monospace;
+}
+
+cite {
+  quotes: "“" "”" "‘" "’";
+  font-style: italic;
+}
+
+figcaption cite:before {
+  content: open-quote;
+}
+
+figcaption cite:after {
+  content: close-quote;
+}
+
+ins {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+// figure {
+//   margin: 0 0 (@line-height-computed / 2); // same as bootstrap p {}
+// }
+
+// figcaption {
+//   margin-top: 1em
+// }
+
+// img {
+//    margin-left: -13em;
+//    margin-right: 2em;
+//    float: left;
+// }
+
+.nav-main {
+  a {
+    padding: .25em .5em;
+  }
+
+  .active a {
+    background: @text-color;
+    color: @body-bg;
+    text-decoration: none;
+  }
+}
+
+article img {
+   .img-responsive;
+   position: relative;
+   z-index: 2;
+}
+
+a abbr[title] {
+  border-bottom: none;
+  cursor: inherit;
+}
+
+// http://stackoverflow.com/a/21515418/214325
+.media-responsive,
+.entry-content-asset  {
+  height: 0;
+  position: relative;
+  overflow: hidden;
+  //max-width: 100%;
+  height: auto;
+
+  iframe,
+  object,
+  embed,
+  video,
+  audio,
+  .media,
+  img {
+    border: 0;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+  }
+}
+
+.ratio-16-9 {
+  padding-bottom: 56.25%; // 16:9 = (9 / 16 = .5625) x 100
+}
+
+.ratio-1_85-1 {
+  padding-bottom: 54.054054054054%; // 1.85:1 = ( 1 / 1.85 ) x 100
+}
+
+.ratio-2_4-1 {
+  padding-bottom: 41.666666666667%; // 2.4:1 = ( 1 / 2.4 ) x 100
+}
+
+.ratio-4-3 {
+  padding-bottom: 75%; // 4:3 = (3 / 4 = .75) x 100
+}
+
+.ratio-3-2 {
+  padding-bottom: 66.666%; // 3:2 = (2 / 3 = .66666666666667) x 100
+}
+
+.film {
+  //max-width: 100%;
+
+  .media-responsive {
+    margin-bottom: 1em;
+  }
+
+  p, ul {
+    margin-left: 0;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+}
+
+.wp-smiley {
+   display: inline;
+}
+
+ul {
+   // margin-left: -1.5em;
+}
+
+address,
+p,
+ul,
+ol,
+dl,
+main > article:not(.type-product),
+.alert {
+   //text-align: left;
+   max-width: 39em;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.tribe-events-sub-nav {
+  max-width: none;
+}
+
+.list-with-headings {
+  & > li {
+    margin-bottom: 0.75em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/*ol*/.list-triple-digits {
+  padding-left: 2.75em;
+}
+
+.ab-top-menu {
+   max-width: inherit;
+}
+
+header,
+nav,
+footer,
+.page-header,
+.tagline {
+   text-align: center;
+}
+
+.page-header {
+  padding: 0;
+  margin-top: 0;
+
+  .h {
+    margin-top: 0;
+  }
+}
+
+.entry-subtitle {
+  margin-top: -7.5px;
+}
+
+figure {
+  margin: @line-height-computed auto;
+
+  iframe,
+  object,
+  embed,
+  video,
+  audio,
+  .media,
+  img {
+      margin-bottom: 0.375em;
+   }
+}
+
+.header-img {
+  margin: 0 auto .75em;
+}
+
+.tagline {
+   max-width: 100%;
+}
+
+// footer small {
+//    display: block;
+//    margin: 0 auto;
+//    max-width: 29em;
+// }
+
+figcaption {
+   text-align: left;
+
+   a {
+      color: inherit;
+      //text-decoration: inherit;
+   }
+}
+
+.implied {
+  &:extend(.sr-only);
+}
+
+.icon-cc {
+  margin-right: -2px;
+  margin-top: -1px;
+}
+
+.hpg-wizard {
+  margin-bottom: 15px;
+  position: relative;
+  // overflow-x: hidden;
+  width: 100%;
+  transition: height 0.25s ease;
+
+  fieldset {
+    margin-top: 0;
+  }
+
+  &__step {
+    position: absolute;
+    background-color: white;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-transition: opacity 0.25s linear;
+            transition: opacity 0.25s linear;
+    -webkit-animation: slide-out 0.5s forwards;
+            animation: slide-out 0.5s forwards;
+    z-index: -1;
+    opacity: 0;
+    
+    &--active {
+      // z-index: 1;
+      -webkit-animation: slide-in 0.5s forwards;
+              animation: slide-in 0.5s forwards;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    // &--next {
+    //   margin-top: .5em;
+    //   margin-bottom: 0;
+    // }
+  }
+}
+
+@keyframes slide-in {
+  100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+  100% { -webkit-transform: translateX(0%); }
+}
+
+@keyframes slide-out {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slide-out {
+  0% { -webkit-transform: translateX(0%); }
+  100% { -webkit-transform: translateX(-100%); }
+}
+
+///////////////
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media only screen and (max-width: 640px)
+,(min-device-width: 768px) and (max-device-width: 1024px) {
+
+//   /* Force table to not be like tables anymore */
+//   tr {
+//     display: table-cell !important;
+//   }
+
+//   td {
+//     display: block;
+//     width: 100% !important;
+//   }
+
+//   table, thead, tbody, th, td { 
+//     display: block;
+//   }
+  
+//   /* Hide table headers (but not display: none;, for accessibility) */
+//   thead tr { 
+//     .sr-only;
+//   }
+  
+//   // tr { border: 1px solid #ccc; }
+  
+//   td { 
+//     /* Behave  like a "row" */
+//     border: none;
+//     border-bottom: 1px solid #eee; 
+//     position: relative;
+//     padding-left: 50%; 
+//   }
+  
+//   td:before { 
+//     /* Now like a table header */
+//     position: absolute;
+//     /* Top/left values mimic padding */
+//     // top: 6px;
+//     top: 18px;
+//     left: 6px;
+//     width: 45%; 
+//     padding-right: 10px; 
+//     white-space: nowrap;
+//     font-weight: bold;
+//   }
+  
+//   /*
+//   Label the data
+//   */
+//   td:nth-of-type(1):before { content: "Size"; }
+//   td:nth-of-type(2):before { content: "Color"; }
+//   td:nth-of-type(3):before { content: "Quantity"; }
+//   // td:nth-of-type(4):before { content: "Actions"; }
+
+  .hpg-wizard__step {
+    max-width: 100%;
+    // max-width: 100vw;
+    // overflow-x: scroll;
+
+    * {
+      font-size: .96em;
+    }
+
+    .btn {
+      height: 44px;
+    }
+  }
+}
+
+// @media (min-width: @screen-sm-min) and (max-width: @screen-md) {
+//   table {
+//     max-width: 50%;
+//   }
+// }
+
+.position-absolute {
+  position: absolute !important;
+}
+
+.position-fixed {
+  position: fixed !important;
+}
+///////////////
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.banner {
+   text-align: center;
+   margin-bottom: 1.5em;
+}
+
+
+/* ==========================================================================
+   Content
+   ========================================================================== */
+
+.brand {
+
+}
+
+.content { }
+
+article:first-child .h:first-child,
+.sr-only + article .h:first-child,
+.main > .h:first-child {
+   margin-top: 0;
+}
+
+/* ==========================================================================
+   Primary Content
+   ========================================================================== */
+
+.main {
+   // .h:first-child {
+   //    margin-top: 0;
+   // }
+}
+
+.archive h2,
+.archive .h2 {
+  text-align: center;
+}
+
+.h > a {
+   text-decoration: none;
+
+   &:hover,
+   &:focus {
+      text-decoration: underline;
+      color: inherit;
+   }
+}
+
+.home .avatar
+//, .about .avatar
+{
+   //width: 200px;
+   margin-bottom: 1em;
+   display: block;
+}
+
+@media only screen and (min-width: @screen-xs-min) {
+   .home .main
+   //, .about .main
+   {
+      .make-sm-column-offset(1.5); // 12.5%
+      width: 87.5%; // 100 - 12.5
+   }
+
+   .avatar {
+      .pull-left();
+      margin: 0 1.5em 1em auto;
+   }
+
+   .avatar-complement {
+      margin-left: 200px;
+
+      address, p, ul, ol, dl {
+         margin-left: 0;
+      }
+   }
+}
+
+.sms {
+   //margin-top: 60px;
+
+   &:before {
+      content: 'Text message';
+      display: block;
+      margin-top: -7.5px;
+      margin-bottom: 15px;
+   }
+}
+
+// .status {
+//    &:before {
+//       content: '(Status)';
+//    }
+// }
+
+figure > figcaption,
+.sms:before,
+.status:before {
+   font-size: .9em;
+   font-style: italic;
+   color: #aaa;   
+}
+
+figure > blockquote + figcaption {
+   margin-top: -20px;
+   margin-bottom: @line-height-computed;
+
+   & a {
+      color: inherit;
+   }
+}
+
+.thought {
+  quotes: none;
+  font-style: italic;
+}
+
+.sms,
+.status
+{
+   p {
+      font-size: @font-size-base;
+   }
+}
+
+/* Gallery Shortcode */
+.gallery-row { padding: 15px 0; }
+
+.form-group {
+   margin-bottom: .75em;
+
+   label {
+      font-weight: bold;
+      margin-bottom: 0.375em;
+   }
+
+   label,
+   input,
+   textarea,
+   {
+      display: block;
+   }
+
+   textarea {
+      width: 100%;
+   }
+}
+
+.color-sample {
+  &, & + span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  & + span {
+    line-height: 1;
+    margin-top: .1em;
+  }
+
+  margin-right: .25em;
+  width: 1em;
+  height: 1em;
+}
+
+.qty {
+  &-sm {
+    width: 4em;
+  }
+}
+
+.clothing-sizes {
+  width: 5em;
+}
+
+// .color-select {
+//   width: 5em;
+// }
+
+.color-select > .dropdown-toggle {
+  text-align: left;
+  width: 100%;
+  display: table;
+
+  & > .hpg-btn-text,
+  & > .hpg-btn-icon {
+    display: table-cell;
+  }
+
+  & > .hpg-btn-text {
+    width: 100%;
+  }
+}
+
+.hpg-input-postal {
+  width: 8em;
+}
+
+fieldset {
+  margin-top: 1em;
+  min-width: 100%;
+}
+
+legend {
+  font-size: 1em;
+  margin-bottom: 0;
+
+  @media ( min-width: @screen-xs ) {
+    margin-bottom: .75em;
+  }
+}
+
+.form-inline {
+  // .control-label {
+  //   text-align: center;
+  // }
+
+  // Kick in the inline
+  @media (min-width: @screen-sm) {
+    // Inline-block all the things for "inline"
+    .form-group  {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+th {
+  text-align: left;
+}
+
+td,
+tbody > tr > th {
+  padding-right: .5em;
+  padding-bottom: .5em;
+  padding-top: .5em;
+
+  @media (min-width: @screen-md) {
+    padding-top: initial;
+  }
+}
+
+td:last-child,
+thead > tr > th:last-child {
+  padding-right: 0;
+}
+
+.help-block {
+  font-size: .75em;
+  margin-top: -.25em;
+}
+
+.hpg-btn-add-row {
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: @btn-success-bg;
+    color: @btn-success-color;
+    border-color: @btn-success-border;
+  }
+}
+
+tbody > tr:first-child > .hpg-row-remove-row {
+  display: none;
+}
+
+.hpg-btn-remove-row {
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: @btn-danger-bg;
+    color: @btn-danger-color;
+    border-color: @btn-danger-border;
+  }
+}
+
+.hpg-product-header {
+  margin-bottom:30px;
+}
+
+.hpg-product-price {
+  font-size: 1.1em;
+}
+
+.hpg-product-details {
+  margin-top: 1em;
+
+  // @media (min-width: @screen-sm) {
+  //   margin-top: -7px;
+  // }
+
+  & > figure:first-child {
+    margin-top: 0;
+  }
+}
+
+.hpg-product-shipping-method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media ( min-width: @screen-md ) {
+    flex-direction: row;
+    margin-left: -44.25px;
+  }
+
+  & > img {
+    // width: 39px;
+    // margin-bottom: 5.25px;
+    margin: 0 auto -39px;
+    transition: opacity 2s;
+
+    @media ( min-width: @screen-md ) {
+      margin-bottom: 0;
+      margin-right: 5.25px;
+    }
+  }
+
+  & > select&__select {
+    width: 100%;
+  }
+}
+
+.hpg-product-image {
+  position: static;
+  // top: 2em;
+  // top: 0;
+  // bottom: 0;
+
+  @media (min-width: @screen-md) {
+    position: -webkit-sticky;
+    position: sticky;
+    // top: 0;
+    top: -420px
+  }
+
+  @media (min-width: @screen-lg) {
+    top: -370px
+  }
+
+  // &:before,
+  // &:after {
+  //   content: '';
+  //   display: table;
+  // }
+
+  // transition: top 2s ease, bottom 2s ease;
+}
+
+// https://github.com/filamentgroup/fixed-sticky
+// .fixedsticky { top: 0; }
+
+h1, .h1 {
+  @media (max-width: @screen-sm) {
+    font-size: 44px;
+  }
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+.sidebar { }
+
+
+
+/* ==========================================================================
+   Posts
+   ========================================================================== */
+
+.hentry header { }
+.hentry time { }
+.byline { }
+.entry-content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  @media ( min-width: @screen-md ) {
+    .product_type-apparel > & {
+      flex-direction: row;
+    }
+  }
+}
+.hentry footer { }
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.content-info {
+   margin-top: 3rem;
+}
+
+
+
+/* ==========================================================================
+   WordPress Generated Classes
+   See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+   ========================================================================== */
+
+.aligncenter { display: block; margin: 0 auto; }
+.alignleft { float: left; }
+.alignright { float: right; }
+figure.alignnone { margin-left: 0; margin-right: 0; }
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media (min-width: @screen-sm-min) { }
+
+@media (min-width: @screen-md-min) { }
+
+@media (min-width: @screen-lg-min) { }

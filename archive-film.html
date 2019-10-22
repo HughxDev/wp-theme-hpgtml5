@@ -1,0 +1,30 @@
+<?php
+global $post;
+$old_post = $post;
+
+// Upcoming Works
+$upcomingWorksQuery = array(
+  'post_type' => 'film',
+  'tax_query' => array(
+    'relation' => 'OR',
+    array(
+      'taxonomy' => 'publishing_status',
+      'field' => 'slug',
+      'terms' => array( 'upcoming' ),
+      //'operator' => 'NOT IN'
+    )
+  )
+);
+
+$films = new WP_Query( $upcomingWorksQuery );
+
+if ( $films->have_posts() ) {
+  get_template_part( 'templates/content', 'film' );
+}
+
+wp_reset_postdata();
+
+$films = $wp_query;
+
+get_template_part( 'templates/content', 'film' );
+?>
